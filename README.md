@@ -2,7 +2,13 @@
 
 > 5 AI agents. One LinkedIn post. Zero AI slop.
 
-A Claude Code skill that runs your LinkedIn content through a rigid 5-phase pipeline. No more generic ChatGPT posts. The skill researches what's trending, extracts YOUR opinion through 5 sharp questions, then writes in your voice using a 7-layer framework. Auto-scans for AI red flags before showing you the draft.
+A Claude Code system that runs your LinkedIn content through a rigid 5-phase pipeline. No more generic ChatGPT posts. The system researches what's trending, extracts YOUR opinion through 5 sharp questions, then writes in your voice using a 7-layer framework. Auto-scans for AI red flags before showing you the draft.
+
+**Two modes available:**
+- **Single skill mode** (`content-daily`) — All 5 phases run in one context. Cheap. Fast. Good for daily posts.
+- **Multi-agent mode** (`content-daily-agents`) — 5 separate Claude Code subagents handle each phase. Higher quality. 3-5x more tokens. Use for big launches and high-stakes posts.
+
+Install one or both. Pick which to run per post.
 
 ---
 
@@ -105,7 +111,7 @@ POSTING CHECKLIST
 - Claude Code installed → https://claude.com/claude-code
 - 30 minutes to fill out 2 templates (positioning + voice card)
 
-### Steps
+### Steps — Single Skill Mode (recommended for most users)
 
 ```bash
 # 1. Create your content system folder
@@ -118,6 +124,26 @@ cp templates/* ~/content-system/
 mkdir -p ~/.claude/skills/content-daily
 cp SKILL.md ~/.claude/skills/content-daily/SKILL.md
 ```
+
+Trigger: `today's LinkedIn post`
+
+### Steps — Multi-Agent Mode (optional, for high-stakes posts)
+
+After single skill install, also run:
+
+```bash
+# 1. Install the orchestrator skill
+mkdir -p ~/.claude/skills/content-daily-agents
+cp skills/content-daily-agents.md ~/.claude/skills/content-daily-agents/SKILL.md
+
+# 2. Install the 5 subagents
+mkdir -p ~/.claude/agents
+cp agents/*.md ~/.claude/agents/
+```
+
+Trigger: `run agent pipeline` or `today's LinkedIn post (agent mode)`
+
+Both modes share the same `~/content-system/` folder. Voice card, positioning, swipe file, and posts log work for both.
 
 ### Fill out the 2 templates that matter
 
@@ -146,16 +172,38 @@ Skill fires. Walks you through the 5 phases. Drops final post + alt hooks + chec
 
 ```
 content-daily/
-├── SKILL.md         ← The 5-agent pipeline (lives in ~/.claude/skills/content-daily/)
-├── SETUP.md         ← Detailed install guide
-├── README.md        ← This file
-└── templates/
-    ├── positioning.md   ← Your niche, ICP, IFP, 3 pillars, enemy
-    ├── voice-card.md    ← 12 questions that define your voice
-    ├── swipe-hooks.md   ← 7 archetypes + 21 templates + anti-patterns
-    ├── posts-log.md     ← Append-only memory of every post
-    └── writing-sop.md   ← 7-layer framework + red-flag scanner
+├── SKILL.md                    ← Single-skill 5-phase pipeline (single-skill mode)
+├── SETUP.md                    ← Detailed install guide
+├── README.md                   ← This file
+├── templates/                  ← User config (copy to ~/content-system/)
+│   ├── positioning.md          ← Your niche, ICP, IFP, 3 pillars, enemy
+│   ├── voice-card.md           ← 12 questions that define your voice
+│   ├── swipe-hooks.md          ← 7 archetypes + 21 templates + anti-patterns
+│   ├── posts-log.md            ← Append-only memory of every post
+│   └── writing-sop.md          ← 7-layer framework + red-flag scanner
+├── skills/                     ← Multi-agent mode orchestrator
+│   └── content-daily-agents.md ← Skill that fires the 5 subagents
+└── agents/                     ← Multi-agent mode subagents (copy to ~/.claude/agents/)
+    ├── scout.md                ← Phase 0 research agent
+    ├── strategist.md           ← Phase 1 topic picker
+    ├── interviewer.md          ← Phase 2 POV extractor
+    ├── writer.md               ← Phase 3 drafter
+    └── editor.md               ← Phase 3d 12-point red-flag scanner
 ```
+
+## Two Modes Compared
+
+| Feature | Single Skill | Multi-Agent |
+|---------|--------------|-------------|
+| Install command | 1 file copy | 7 file copies |
+| Token cost per post | 1x | 3-5x |
+| Speed | Faster (single context) | Slower (sequential agents) |
+| Quality | High | Higher (strict separation) |
+| Context isolation | All 5 phases share context | Each agent has own context |
+| Pushback strength | Medium | Stronger (interviewer dedicated) |
+| Red-flag scan | Same scan, single pass | Dedicated editor agent, can rewrite-and-rescan up to 3 times |
+| Best for | Daily posts | Launches, lead magnets, high-stakes posts, batch generation |
+| Trigger | `today's LinkedIn post` | `run agent pipeline` |
 
 ---
 

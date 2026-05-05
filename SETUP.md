@@ -41,10 +41,32 @@ cp templates/* ~/content-system/
 
 ## Step 3 — Install the skill
 
+### Single skill mode (recommended)
+
 ```bash
 mkdir -p ~/.claude/skills/content-daily
 cp SKILL.md ~/.claude/skills/content-daily/SKILL.md
 ```
+
+Trigger: `today's LinkedIn post`
+
+### Multi-agent mode (optional, advanced)
+
+For high-stakes posts you can also install the multi-agent version. It uses 5 separate Claude Code subagents (3-5x more tokens, higher quality):
+
+```bash
+# Install the orchestrator skill
+mkdir -p ~/.claude/skills/content-daily-agents
+cp skills/content-daily-agents.md ~/.claude/skills/content-daily-agents/SKILL.md
+
+# Install the 5 subagents
+mkdir -p ~/.claude/agents
+cp agents/*.md ~/.claude/agents/
+```
+
+Trigger: `run agent pipeline` or `today's LinkedIn post (agent mode)`
+
+You can install both. They share the same `~/content-system/` folder. Pick which mode to run per post based on stakes.
 
 ## Step 4 — Fill out the 2 templates that matter
 
