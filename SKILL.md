@@ -155,6 +155,72 @@ Only after ALL checks pass, present to user.
 
 ---
 
+## PHASE 5 — Strategy QA + Auto-Improve
+
+Run this automatically after the Editor scan passes. Do not skip. Do not show the post to user until this completes.
+
+### 5a — Strategic Alignment Check
+
+Read `~/content-system/positioning.md` and `~/content-system/posts-log.md`. Score the post on these 6 checks:
+
+| Check | Pass condition | Flag if |
+|-------|---------------|---------|
+| Pillar rotation | Post covers a pillar not used in last 2 posts | Same pillar 3 posts in a row |
+| ICP/IFP balance | No more than 2 ICP posts this week | 3+ ICP posts this week with no IFP |
+| TAM broad post | At least 1 broad reach post per week | 7+ days since last broad post |
+| Hook freshness | Hook pattern not used in last 30 days | Hook pattern repeated |
+| Positioning fit | Post reinforces user's authority angle | Post drifts from core positioning |
+| Lara 4-3-2-1 | Monthly post mix has variety | All posts same type |
+
+### 5b — QA Output
+
+Show this card before the post:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STRATEGY QA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Pillar rotation: [pass/flag]
+✅ ICP/IFP balance: [pass/flag]
+✅ TAM broad post: [pass/flag]
+✅ Hook freshness: [pass/flag]
+✅ Positioning fit: [pass/flag]
+✅ Lara 4-3-2-1: [pass/flag]
+
+Strategic note: [1 sentence — what this post does for user's positioning this week]
+```
+
+If any check is 🔴 red: say "Before I show you this post, one strategic issue: [specific issue]. Want me to adjust before you see it, or see it as-is?" Wait for answer. Fix if requested.
+
+If all green: proceed directly to showing the post.
+
+### 5c — Auto-Improve (triggers when user returns with 72h data)
+
+When user comes back and says anything like "here are my numbers", "got my stats", or pastes impressions/likes/comments:
+
+**Step 1 — Log performance**
+Update `~/content-system/posts-log.md` with the data.
+
+**Step 2 — Extract signal**
+- Likes > 50 or impressions > 2000: mark hook pattern as "high performer" in `~/content-system/swipe-hooks.md` with a ⭐ tag
+- Likes < 10 or impressions < 300: note what didn't work next to that hook pattern
+- Comments > 5: note the topic generated conversation, flag for future posts
+
+**Step 3 — Pattern detection**
+If the same hook pattern appears 3+ times with high performance: add it as a new section in `~/content-system/swipe-hooks.md` under "Proven for [user's niche]"
+If same type of post consistently underperforms: add a note to `~/content-system/writing-sop.md` under "What to avoid"
+
+**Step 4 — Voice learning**
+If user edited the post heavily before publishing, ask:
+"What did you change? Give me 1-2 examples — I'll update your voice card so I don't repeat those patterns."
+After answer: update `~/content-system/voice-card.md` with the new rule.
+
+**Step 5 — Report back**
+Say:
+"✅ System updated. Here's what I learned from this post: [1-2 bullet points on what was added/changed in your files]. Your next post will reflect this."
+
+---
+
 ## PHASE 4 — Log + Learn
 
 Append to `~/content-system/posts-log.md`:
@@ -290,9 +356,11 @@ Monthly phased intent:
 1. **Never skip Phase 0.** 30 seconds saves a bad post.
 2. **Never skip Phase 2.** No POV questions = generic AI post.
 3. **Never skip Red Flag Scan.** AI slop ruins brand.
-4. **Never repeat hooks from posts-log last 30 days.**
-5. **Always write in user's voice from voice-card.md.**
-6. **Always log intent before showing draft.**
+4. **Never skip Phase 5 QA.** Strategic misalignment compounds over weeks.
+5. **Never repeat hooks from posts-log last 30 days.**
+6. **Always write in user's voice from voice-card.md.**
+7. **Always log intent before showing draft.**
+8. **Always auto-improve when 72h data arrives.** The system should get smarter with every post, not stay static.
 
 ---
 
