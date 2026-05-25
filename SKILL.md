@@ -172,27 +172,62 @@ Read `~/content-system/positioning.md` and `~/content-system/posts-log.md`. Scor
 | Positioning fit | Post reinforces user's authority angle | Post drifts from core positioning |
 | Lara 4-3-2-1 | Monthly post mix has variety | All posts same type |
 
-### 5b — QA Output
+### 5b — QA Output + Strategy Checklist
 
-Show this card before the post:
+Show this full card before the post. This teaches the user WHY the post should perform and shows every strategy applied:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STRATEGY QA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Pillar rotation: [pass/flag]
-✅ ICP/IFP balance: [pass/flag]
-✅ TAM broad post: [pass/flag]
-✅ Hook freshness: [pass/flag]
-✅ Positioning fit: [pass/flag]
-✅ Lara 4-3-2-1: [pass/flag]
+✅ Pillar rotation: [pass/flag + which pillar]
+✅ ICP/IFP balance: [pass/flag + targeting ICP or IFP this week]
+✅ TAM broad post: [pass/flag + days since last broad post]
+✅ Hook freshness: [pass/flag + hook type used]
+✅ Positioning fit: [pass/flag + how it reinforces authority angle]
+✅ Lara 4-3-2-1: [pass/flag + post type balance this month]
 
-Strategic note: [1 sentence — what this post does for user's positioning this week]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STRATEGY CHECKLIST — What's in this post
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Hook type: [which type — Contrarian / Story / Data / Observation / Open Question]
+  → Why: [1 line on why this hook works for the target reader]
+
+Framework applied: [Lara 7-layer / PAS / AIDA / SLAY — which one and how]
+  → Why: [1 line on why this framework fits this topic]
+
+Emotional lead: [which emotion opens — fear / frustration / regret / hope / surprise]
+  → Why: [1 line on why this emotion moves the ICP/IFP]
+
+Broad/narrow structure: [applied or not — and where the pivot happens]
+
+Contrarian angle: [present or absent — and why]
+
+POV depth: [strong / needs work — based on the Phase 2 answers used]
+
+⚠️ Strategy gaps (if any): [any Lara framework not used, and whether it matters for this post]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHY THIS POST SHOULD PERFORM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2-3 sentences: what combination of strategies makes this post strong, and what result to expect — reach / trust / leads]
 ```
 
-If any check is 🔴 red: say "Before I show you this post, one strategic issue: [specific issue]. Want me to adjust before you see it, or see it as-is?" Wait for answer. Fix if requested.
+If any QA check is red: say "One strategic issue before I show you this: [specific issue]. Want me to fix before you see it, or see it as-is?" Wait for answer. Fix if requested.
 
 If all green: proceed directly to showing the post.
+
+### 5c — Next Post Suggestions (runs after Phase 4 log)
+
+After logging is complete, always say:
+
+"Based on your posts this week and what's trending in your niche, here are 3 ideas for your next post:
+
+1. **[Topic]** — Pillar: [X] | Type: [ICP/IFP] | Why now: [1 line]
+2. **[Topic]** — Pillar: [X] | Type: [ICP/IFP] | Why now: [1 line]
+3. **[Topic]** — Pillar: [X] | Type: [ICP/IFP] | Why now: [1 line]
+
+Save one that resonates. Next time you type /content-daily, tell me which one and we'll build on it."
 
 ### 5c — Auto-Improve (triggers when user returns with 72h data)
 
@@ -351,6 +386,94 @@ Monthly phased intent:
 
 ---
 
+## PHASE 6 — Image Prompt Agent
+
+Runs after the post is approved by user. Optional but recommended for every post.
+
+### 6a — Read the post context
+
+Extract from the final post:
+- The hook (first line)
+- The core insight or key message
+- The emotion (fear / frustration / hope / surprise)
+- The target (ICP or IFP)
+
+### 6b — Check swipe file for image inspiration
+
+Read `~/content-system/swipe-images/` if it exists. This folder holds image formats the user has saved as inspiration.
+
+If the folder has items: list 2-3 relevant ones based on post topic/emotion.
+If the folder is empty or missing: skip and use built-in format library.
+
+To add to swipe-images: user saves a screenshot or description to `~/content-system/swipe-images/[name].md` with a short note on the style.
+
+### 6c — Present format options
+
+Show 4-5 image format options. Always include at least one personal photo option and one AI-generated option.
+
+**Built-in format library:**
+
+```
+FORMAT A — Text Poster (Dan Martell style)
+Bold insight or hook on clean background. High contrast. Big font. No face needed.
+Best for: contrarian takes, data points, strong opinions
+Example prompt base: "Minimalist poster, white background, bold black sans-serif text centered: '[hook]'. Clean, editorial, no stock photo elements."
+
+FORMAT B — Tweet Card / Screenshot Style
+Hook text in a framed card that looks like a social post. Clean borders.
+Best for: punchy one-liners, contrarian statements, quotable moments
+Example prompt base: "Social media card design, light background, rounded corners, clean typography, text reads '[hook]', professional and modern."
+
+FORMAT C — Personal Photo + Caption
+User's own photo as the main visual. Text overlay with hook or key line.
+Best for: story posts, behind-the-scenes, personal opinion posts
+Action: Ask "Do you have a photo that fits this post? If yes, describe it and I'll write the overlay text."
+
+FORMAT D — Branded Insight Graphic
+Key stat, number, or data point in branded colors with clean layout.
+Best for: authority posts, data-driven posts, results
+Example prompt base: "Clean infographic card, [brand color] background, large number '[stat]' centered, subtext '[context]', professional and data-focused."
+
+FORMAT E — Swipe File Inspiration
+[Show items from ~/content-system/swipe-images/ if available]
+```
+
+### 6d — Ask user to pick
+
+Say: "Which format fits this post best — A, B, C, D, E, or describe your own? If you have a personal photo that could work, tell me and I'll use that instead."
+
+Wait for answer.
+
+### 6e — Generate the image prompt
+
+Based on format chosen, write a detailed image generation prompt. Include:
+- Visual style (photoreal / editorial / graphic)
+- Color palette (neutral, brand-matched, or high contrast)
+- Text overlay if needed (exact words from the hook)
+- Mood (professional / warm / bold / clean)
+- What to avoid (stock photo clichés, faces unless personal photo, neon, 3D)
+
+Output format:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMAGE PROMPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Format: [which format chosen]
+Style: [photoreal / editorial / graphic]
+
+Prompt:
+[Full detailed image generation prompt — paste into GPT Image 2, Midjourney, or Ideogram]
+
+Text overlay (if applicable): "[exact text]"
+
+What to avoid: stock photo hands, neon colors, 3D renders, generic business imagery
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Then say: "Paste this prompt into your image generator. If using GPT Image 2, go to chat.openai.com and paste it. If you want me to generate it directly, ask your AI assistant that has image generation enabled."
+
+---
+
 ## Hard Rules
 
 1. **Never skip Phase 0.** 30 seconds saves a bad post.
@@ -361,6 +484,8 @@ Monthly phased intent:
 6. **Always write in user's voice from voice-card.md.**
 7. **Always log intent before showing draft.**
 8. **Always auto-improve when 72h data arrives.** The system should get smarter with every post, not stay static.
+9. **Always run Phase 6 after post approval.** Every post should have an image prompt ready before publishing.
+10. **Never generate a stock-photo-style image prompt.** Photoreal and brand-specific only. No handshakes, lightbulbs, rockets, neon.
 
 ---
 
