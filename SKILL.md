@@ -232,12 +232,13 @@ Before showing user ANY draft, run scan. If anything fails, rewrite and re-scan:
 - Hook under 12 words per line?
 - Paragraphs under 40 words?
 
-Only after ALL checks pass, present to user.
+Only after ALL checks pass, do NOT show the post yet. Run Phase 5 QA first.
 
 ### 3e. Generate alternates
 - 3 alternate hooks using DIFFERENT patterns
-- 1 image prompt (or "skip, text-only works")
 - Posting day recommendation (based on posts-log rhythm + pillar rotation)
+
+**AUTO-TRANSITION → Phase 5:** After red flag scan passes and alternates are ready, immediately run Phase 5 QA. Do not show anything to the user yet.
 
 ---
 
@@ -299,11 +300,17 @@ WHY THIS POST SHOULD PERFORM
 [2-3 sentences: what combination of strategies makes this post strong, and what result to expect — reach / trust / leads]
 ```
 
-If any QA check is red: say "One strategic issue before I show you this: [specific issue]. Want me to fix before you see it, or see it as-is?" Wait for answer. Fix if requested.
+If any QA check is red: say "One strategic issue before I show you this: [specific issue]. Want me to fix before you see it, or see it as-is?" Wait for answer. Fix if requested. Re-run QA after fix.
 
-If all green: proceed directly to showing the post.
+If all green: proceed directly to showing the post output to the user.
 
-### 5c — Next Post Suggestions (runs after Phase 4 log)
+**AUTO-TRANSITION → Show post:** After QA passes, show the full output (post + structure notes + alternate hooks + posting checklist). Then immediately say: "Read this out loud. If any sentence doesn't sound like you, tell me which one and I'll rewrite it. When you're happy, I'll move to the image step."
+
+Wait for user to approve or request edits. After approval:
+
+**AUTO-TRANSITION → Phase 6:** Say: "Post approved. Now let's get your image ready. Give me a second to check your swipe file..." Then immediately begin Phase 6 without waiting.
+
+### 5d — Next Post Suggestions (runs after Phase 4 log)
 
 After logging is complete, always say:
 
@@ -557,6 +564,8 @@ What to avoid: stock photo hands, neon colors, 3D renders, generic business imag
 ```
 
 Then say: "Paste this prompt into your image generator. If using GPT Image 2, go to chat.openai.com and paste it. If you want me to generate it directly, ask your AI assistant that has image generation enabled."
+
+**AUTO-TRANSITION → Phase 4:** Immediately after delivering the image prompt, say: "Saving your post to memory now..." Then run Phase 4 log without waiting.
 
 ---
 
