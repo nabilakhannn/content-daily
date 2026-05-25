@@ -273,3 +273,15 @@ Free. Runs inside your Claude Code subscription. No external APIs, no per-post c
 ## License
 
 MIT — fork, modify, ship. Just keep your voice card private (it's your moat).
+
+---
+
+## License
+
+CC BY-NC-SA 4.0 — free for personal and educational use. Share, adapt, build on it. Do not resell or package inside a paid product without permission.
+
+See `LICENSE` file or [creativecommons.org/licenses/by-nc-sa/4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+## Credit
+
+Built on Lara Acosta 4-3-2-1 + Known Club cohort frameworks.
