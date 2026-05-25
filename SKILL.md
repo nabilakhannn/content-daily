@@ -11,6 +11,91 @@ Load voice from `~/content-system/voice-card.md`. Load writing format from `~/co
 
 ---
 
+## SETUP CHECK — First Run Only
+
+Before anything else, check if `~/content-system/SETUP-DONE.md` exists.
+
+**If it exists:** skip this entire section. Go straight to Step 0.
+
+**If it does NOT exist:** this is a first run. Walk the user through the full setup below. Do not skip any step.
+
+---
+
+### First Run Setup Wizard
+
+Say: "Welcome. Before we write your first post, let me set up your full content memory system. This takes 5 minutes and you only do it once. I'll walk you through every step."
+
+**Step 1 — Create your swipe images folder**
+
+Run:
+```
+mkdir -p ~/content-system/swipe-images
+```
+
+Tell user: "✅ Swipe images folder created. This is where your visual inspiration will live."
+
+**Step 2 — Install Obsidian (your visual brain)**
+
+Say: "Obsidian is a free app that lets you see all your content files in one place — like a notebook for your AI system. Go to obsidian.md and download it. It's free. Tell me when it's installed."
+
+Wait for user to confirm.
+
+Then say: "Now open Obsidian. You'll see a screen asking you to open or create a vault. Click 'Open folder as vault'. Navigate to your home folder and select the folder called content-system. Click Open."
+
+Wait for user to confirm.
+
+Then say: "✅ Your content brain is now visible in Obsidian. Every file your AI writes — your posts log, your voice card, your positioning — you can see and browse here."
+
+**Step 3 — Install the Obsidian Web Clipper extension**
+
+Say: "This extension lets you save any LinkedIn post or image you like directly into your swipe file with one click. Here's how to install it:
+
+1. Open Chrome or Edge
+2. Search for 'Obsidian Web Clipper' in the Chrome Web Store, or go to: chromewebstore.google.com/detail/obsidian-web-clipper/mphkdfmipddgfobjhphabphmpdckgfhb
+3. Click 'Add to Chrome'
+4. Once installed, click the extension icon in your browser toolbar
+5. It will ask which vault to connect to — select your content-system vault
+6. Set the default save folder to: swipe-images
+
+Tell me when this is done."
+
+Wait for user to confirm.
+
+**Step 4 — How to use your swipe file**
+
+Say: "From now on, whenever you see a LinkedIn post that made you stop scrolling — the hook was great, the image was good, the format worked — click the Obsidian Web Clipper extension. It saves it instantly to your swipe-images folder. No copying, no screenshots, no remembering.
+
+Every time you write a post, I'll check that folder and pull inspiration from what you've saved. The more you save, the smarter your system gets."
+
+**Step 5 — Mark setup as complete**
+
+Run:
+```
+echo "Setup completed on $(date)" > ~/content-system/SETUP-DONE.md
+```
+
+Say: "✅ Setup complete. Your full content memory system is running:
+
+📁 ~/content-system/
+├── positioning.md — who you help, your pillars, your edge
+├── voice-card.md — your tone, banned phrases, signature style
+├── writing-sop.md — how your posts are built
+├── swipe-hooks.md — hook patterns that work
+├── swipe-images/ — visual inspiration you clip from LinkedIn
+└── posts-log.md — memory of every post you write
+
+Your system learns every time you:
+- Write a post (auto-logged)
+- Come back with 72h data (auto-improved)
+- Clip a post you liked (swipe file grows)
+- Tell me what to change (voice card updates)
+
+Now let's write your first post. How many posts do you want to create today — one, or a full week?"
+
+Then go to Step 0.
+
+---
+
 ## Step 0 — Confirm scope
 
 Before anything, confirm: single post or batch (weekly = 4 posts, monthly = 16 posts)?
@@ -33,9 +118,10 @@ Run these 4 searches in PARALLEL. Do not ask user to wait — just do it. Do not
 - Extract: niche, ICP (ideal customer), IFP (ideal follower), 3 pillars, unfair advantage, enemy
 - Goal: every topic must tie back to positioning
 
-### Research Source 3: Hook swipe file
-- Read: `~/content-system/swipe-hooks.md`
-- Goal: see which hook patterns are working, pick fresh angles
+### Research Source 3: Hook swipe file + saved inspiration
+- Read: `~/content-system/swipe-hooks.md` — hook patterns available
+- Read: `~/content-system/swipe-images/` — scan any saved posts or images for format inspiration and what resonated with the user
+- Goal: see which hook patterns are available, what visual formats the user has saved, pick fresh angles that match their saved inspiration
 
 ### Research Source 4: User's posts memory
 - Read: `~/content-system/posts-log.md`
