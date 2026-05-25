@@ -44,6 +44,10 @@ Run these 4 searches in PARALLEL. Do not ask user to wait — just do it. Do not
 
 Output of Phase 0 (keep internal): compressed brief with ~10 candidate topic angles tagged with [trend + positioning fit + hook pattern available].
 
+**AUTO-TRANSITION → Phase 1:** Immediately after research completes, say:
+"✅ Research done. I've looked at what's trending in your niche, checked your positioning, and reviewed what you've posted before. Here are your 3 best options for today:"
+Then present Phase 1 topic options immediately. Do not wait for user to ask.
+
 ---
 
 ## PHASE 1 — Topic Selection
@@ -72,6 +76,10 @@ Wait for user to pick. Don't move forward until they do.
 
 If they pitch own topic, sanity check: "Does this serve Pillar 1, 2, or 3? Speaks to ICP or IFP?"
 
+**AUTO-TRANSITION → Phase 2:** The moment the user picks a topic, say:
+"✅ Topic locked. Now I need to hear from YOU — not just facts, your actual opinion and experience. I'll ask 5 quick questions, one at a time. The better your answers, the better your post sounds like you and not AI. Here's the first one:"
+Then ask Q1 immediately.
+
 ---
 
 ## PHASE 2 — POV Extraction (4-5 questions)
@@ -99,6 +107,10 @@ If answers weak/vague, push back:
 - "If we kept ONE line from this, what would it be?"
 
 Do not move to writing until all 5 answers sharp.
+
+**AUTO-TRANSITION → Phase 3:** After the 5th answer is solid, say:
+"✅ Perfect. I have everything I need — your opinion, your story, your edge. Writing your post now. Give me 30 seconds..."
+Then immediately begin Phase 3 without waiting for user input.
 
 ---
 
@@ -162,6 +174,17 @@ Append to `~/content-system/posts-log.md`:
 
 Remind user: "Post live. Stay 30 minutes. After 72h, paste post + numbers back, I'll update log."
 
+**AUTO-TRANSITION → END:** After logging, say:
+"✅ All done. Your post is ready.
+
+Here's what to do right now:
+1. Copy the post above → paste on LinkedIn → post live (never schedule)
+2. Stay online 30 minutes → reply to every comment
+3. Comment on 3 posts in your niche while yours is live
+4. Come back after 72 hours → paste your LinkedIn post URL + likes/comments/impressions → I'll update your memory so the next post is smarter
+
+To write your next post, type /content-daily again."
+
 ---
 
 ## Output Format (Locked)
@@ -193,6 +216,31 @@ ALTERNATE HOOKS
 IMAGE PROMPT (optional)
 ━━━━━━━━━━━━━━━━━━
 [Prompt for graphic/photo brief — or "skip, text-only works"]
+
+━━━━━━━━━━━━━━━━━━
+COMMENT SEQUENCE (5 comments to post after going live)
+━━━━━━━━━━━━━━━━━━
+Every post gets 5 comments prepared before publishing. Comments are the second content layer.
+
+Comment types (rotate, never repeat same type twice in a row):
+- Reaction screenshot — caption framing real comments from others as reactions to your post insight
+- Own picture + take — Nabila's photo with 1-2 line caption
+- Behind the scenes — how the post was made or what happened after
+- Receipt drop — a stat, result, or proof point
+- Story that didn't fit — cut from the post body, lives here
+
+For reaction screenshot comments:
+- Pick the insight the post teaches
+- Write caption as: "people's reaction when they learned [insight]" OR a short punchy frame (see variations in COMMENT-STRATEGY.md)
+- Attach screenshot of real comments that match that reaction
+- One caption per comment. One angle only.
+
+Reference: If user has a COMMENT-STRATEGY.md in ~/content-system/, read it for caption patterns. Otherwise use these examples as inspiration — adapt to the user's niche and post topic:
+- "what [ICP] say when they realize [core insight from post]"
+- "the [client/person] who [did the thing the post is about]"
+- "a stat that didn't fit in the post but changes how you read it"
+- "what I cut from the draft because it was too honest"
+- "the behind-the-scenes on how this post came together"
 
 ━━━━━━━━━━━━━━━━━━
 POSTING CHECKLIST
