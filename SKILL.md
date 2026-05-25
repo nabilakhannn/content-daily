@@ -104,6 +104,41 @@ If batch, run Phase 0 once for whole batch.
 
 ---
 
+## CLONE MODE — Triggered by "clone [path or file name]"
+
+If the user says "clone [file path]" or "clone this format" and provides a swipe file path, activate Clone Mode before Phase 0.
+
+**What to do:**
+
+1. Read the file at the path provided. If no full path given, search `~/content-system/swipe-images/` and `~/Documents/Obsidian\ Vault/raw/viral-corpus/` for the filename.
+
+2. Extract these 5 elements from the swipe post:
+   - **Post structure:** is it a checklist, numbered steps, short punchy lines, story narrative, or mixed?
+   - **Hook pattern:** what is the first line doing? (bold claim, question, stat, story open, contrarian)
+   - **Format rhythm:** long paragraphs or short punches? bullet density? whitespace style?
+   - **Image type:** screenshot, text poster, infographic, personal photo, branded stat, GIF/motion, or carousel?
+   - **Tone:** casual or authoritative? first person story or third person observation?
+
+3. Show user a one-line format summary:
+   ```
+   Clone target locked:
+   Structure: [checklist / numbered steps / short punches / story]
+   Hook type: [bold claim / stat / question / contrarian / story open]
+   Image format: [screenshot / text poster / branded stat / etc]
+   Tone: [casual / authoritative]
+   ```
+
+4. Say: "I will write your post to match this exact structure. What is the topic?"
+
+5. Then run Phase 1 (Strategist) and Phase 2 (Interviewer) normally BUT:
+   - Writer in Phase 3 MUST mirror the cloned structure exactly
+   - Image Agent in Phase 6 MUST match the cloned image type and write a prompt in that style
+   - Do NOT switch to a different format even if another format would perform better
+
+**Clone Mode ends after Phase 6. Memory system still logs the post normally.**
+
+---
+
 ## PHASE 0 — Research (silent, ~30 seconds)
 
 Run these 4 searches in PARALLEL. Do not ask user to wait — just do it. Do not skip.
