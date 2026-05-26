@@ -18,6 +18,29 @@ Load voice from `~/content-system/voice-card.md`. Load writing format from `~/co
 
 ---
 
+## 72H FEEDBACK HANDLER — Fires when user returns with post stats
+
+**Trigger phrases:** "here are my stats", "got X likes", "X impressions", "post got [number]", "72h update", "my post did [number]", or any message containing post performance data.
+
+When triggered, do NOT start a new post. Instead:
+
+1. Ask: "Which post is this for? Paste the first line of the hook so I can match it in your log."
+2. Read `~/content-system/posts-log.md` and find the matching entry.
+3. Update the entry with the data they gave (likes, comments, impressions, DMs received).
+4. Analyse: compare to previous posts in the log. What hook type, content type, and archetype performed best? What flopped?
+5. Update `~/content-system/voice-card.md` — append one insight line:
+   `## Performance Note [date]: [Hook type X] on [Content type Y] gets [better/worse] engagement than average. Adjust weighting.`
+6. Show the user a 3-line coach response:
+   ```
+   Performance logged.
+   Best-performing pattern so far: [hook type + content type combo from log]
+   Coaching note: [1 specific thing to do differently or double down on next post]
+   ```
+
+This is how the system learns. Every 72h update makes the next post smarter.
+
+---
+
 ## SETUP CHECK — First Run Only
 
 Before anything else, check if `~/content-system/SETUP-DONE.md` exists.
@@ -66,7 +89,15 @@ Say: "This extension saves any LinkedIn post you like directly into your swipe f
 
 Tell me when this is done. Then tell me the folder path you chose — I'll use it every time I look for your swipe file inspiration."
 
-Wait for user to confirm.
+Wait for user to confirm AND provide the swipe folder path.
+
+When they give the path, run:
+```bash
+mkdir -p ~/content-system
+echo "obsidian_swipe_path=[REPLACE_WITH_THEIR_EXACT_PATH]" >> ~/content-system/config.md
+```
+
+Tell user: "✅ Swipe path saved. I'll find your clipped posts automatically from now on."
 
 **Step 4 — How to use your swipe file**
 
@@ -256,9 +287,13 @@ Say: "Here are the exact steps. Follow along on screen:
 
 **Step 7B:** Come back here and paste your token. Type: MY TOKEN IS [paste it here]"
 
-Wait for token. When received:
+Wait for token. When received, save it:
+```bash
+echo "[TOKEN_THEY_PASTED]" > ~/content-system/.notion-token
+chmod 600 ~/content-system/.notion-token
+```
 
-Say: "✅ Notion connected. Your posts log will now sync to Notion automatically after every post.
+Say: "✅ Notion token saved securely. I'll read it automatically every session — you never need to paste it again.
 
 One more thing: share one Notion page with your integration.
 → Open any Notion page you want to use as your content hub
@@ -283,14 +318,37 @@ Say: "Here are the exact steps:
 
 **Step 8C:** I'll create your index automatically."
 
-Wait for key. When received, note the key to use in future sessions (store in memory note, do not write to any file on disk).
+Wait for key. When received, save it and create their index:
+```bash
+echo "[KEY_THEY_PASTED]" > ~/content-system/.pinecone-key
+chmod 600 ~/content-system/.pinecone-key
+```
+
+Tell user: "✅ Pinecone key saved. Long-term memory is now active — your content patterns and winning hooks will persist forever across sessions."
 
 ---
 
-**Step 9 — Mark setup as complete**
+**Step 9 — Download reference files + mark setup complete**
 
-Run:
-```
+Run ALL of these in sequence:
+```bash
+# Download hook library (100+ hooks organised by emotion)
+curl -sL https://raw.githubusercontent.com/nabilakhannn/content-daily/main/templates/swipe-hooks.md -o ~/content-system/swipe-hooks.md
+
+# Download writing frameworks (SLAY / PAS / AIDA + content type decision tree)
+curl -sL https://raw.githubusercontent.com/nabilakhannn/content-daily/main/templates/writing-sop.md -o ~/content-system/writing-sop.md
+
+# Create posts log
+cat > ~/content-system/posts-log.md << 'EOF'
+# Posts Log
+
+Every post you write is saved here. Come back after 72h with likes/comments/impressions and I'll update your memory so each post gets smarter.
+
+---
+
+EOF
+
+# Mark setup complete
 echo "Setup completed on $(date)" > ~/content-system/SETUP-DONE.md
 ```
 
@@ -377,7 +435,7 @@ Run these 4 searches in PARALLEL. Do not ask user to wait — just do it. Do not
 - Read: `~/content-system/swipe-hooks.md` — 100+ hook patterns organized by emotion (fear / frustration / curiosity / hope / surprise / identity / story / data / opinion / confession) + 6 advanced structures (credibility-before-claim, hypothesis-busting, contrast proof, anti-feature, result-first, time compression)
 - Read: `~/content-system/writing-sop.md` — Step 0 has the content type decision tree (Educational / Storytelling / Lead Magnet). Content type fires BEFORE framework. Framework flows from type: Educational → PAS, Storytelling → SLAY, Lead Magnet → AIDA. Framework selection table also in that file. Never default to SLAY for every post — variety matters.
 - Read: `~/content-system/swipe-images/` — scan any saved posts or images for format inspiration
-- **Also read Obsidian swipe vault:** check the user's Obsidian vault swipe folder (they set the path in Step 3 of setup — ask them if you don't know it). These are LinkedIn posts clipped with Obsidian Web Clipper. Each file has the full post text in a `## Post` or `## Feed post` section. Read the post text to understand format, hook style, and rhythm.
+- **Also read Obsidian swipe vault:** read `~/content-system/config.md` to get `obsidian_swipe_path`. If the file or key doesn't exist, ask once and save it: `echo "obsidian_swipe_path=[path]" >> ~/content-system/config.md`. Never ask more than once. These are LinkedIn posts clipped with Obsidian Web Clipper. Each file has the full post text in a `## Post` or `## Feed post` section. Read the post text to understand format, hook style, and rhythm.
 - Goal: see which hook patterns are available, what visual formats the user has saved, what structures high-performing posts use, pick fresh angles that match saved inspiration
 
 ### Research Source 4: User's posts memory
@@ -401,6 +459,8 @@ Present 3-5 topic options. Format:
 Based on what's trending + your positioning + what's in your swipe file, here are 3 post options:
 
 1. [Topic title]
+   Type: [Educational / Storytelling / Lead Magnet]
+   Framework: [PAS / SLAY / AIDA]
    Pillar: [Broad TAM / Niche ICP / Authority]
    Why now: [1 line — what's trending or fresh]
    Hook angle: [Contrarian / Story / Data / etc.]
@@ -414,6 +474,8 @@ Based on what's trending + your positioning + what's in your swipe file, here ar
 
 Pick one (1/2/3), or pitch your own topic.
 ```
+
+Always vary types across the 3 options — never show 3 of the same type. Aim for one Educational, one Storytelling, one Lead Magnet (if they have an offer) or one of each available type.
 
 Wait for user to pick. Don't move forward until they do.
 
