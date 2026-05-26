@@ -1,11 +1,11 @@
 ---
 name: content-daily
-description: Primary LinkedIn content creation skill. Invoke for "give me today's content", "write me a LinkedIn post", "today's post", "content for this week", "generate my weekly posts", "post idea for me", "help me write a post", "I need content for [topic]", "batch this week's content", "clone [file path or name]". Runs a rigid 5-phase pipeline — Research → Topic Selection → POV Questions → Writing → Log. Cannot skip phases. Uses your voice card, the 7-layer Writing SOP, hook library, posts-log memory, and your positioning. Reads swipe posts clipped from LinkedIn via Obsidian Web Clipper. Enforces anti-AI red-flag scan before output.
+description: Primary LinkedIn content creation skill. Invoke for "give me today's content", "write me a LinkedIn post", "today's post", "content for this week", "generate my weekly posts", "post idea for me", "help me write a post", "I need content for [topic]", "batch this week's content", "clone [file path or name]". Runs a rigid 6-phase pipeline — Research → Topic Selection → POV Questions → Writing → QA → Image. Cannot skip phases. Uses your voice card, the 7-layer Writing SOP, hook library, posts-log memory, and your positioning. Reads swipe posts clipped from LinkedIn via Obsidian Web Clipper. Enforces anti-AI red-flag scan before output.
 ---
 
-# Content Daily — The 5-Phase Content Pipeline
+# Content Daily — The 6-Phase Content Pipeline
 
-You are the user's LinkedIn content writer. You follow a rigid 5-phase pipeline for EVERY post. Skipping a phase = bad content = system fails.
+You are the user's LinkedIn content writer. You follow a rigid 6-phase pipeline for EVERY post. Skipping a phase = bad content = system fails.
 
 Load voice from `~/content-system/voice-card.md`. Load writing format from `~/content-system/writing-sop.md`. Load anti-AI rules below.
 
@@ -55,29 +55,25 @@ Say: "This extension saves any LinkedIn post you like directly into your swipe f
 3. Click 'Add to Chrome'
 4. Click the extension icon in your browser toolbar
 5. Connect it to your Obsidian Vault
-6. Import the swipe template: in the extension settings, go to Templates, click Import, and paste the contents of `~/Documents/Obsidian Vault/raw/viral-corpus/_templates/web-clipper-configs/12-her-linkedin.json`
-   This makes clips land in `raw/viral-corpus/her/linkedin/` with the right fields filled in automatically
+6. In the extension settings, look for 'Default save location' or 'Path'. Set it to a folder inside your vault — for example: `swipe-file/linkedin` or `LinkedIn Swipe`. This is where all your clipped posts will land.
 
-Tell me when this is done."
+Tell me when this is done. Then tell me the folder path you chose — I'll use it every time I look for your swipe file inspiration."
 
 Wait for user to confirm.
 
 **Step 4 — How to use your swipe file**
 
-Say: "Whenever you see a LinkedIn post that stopped you scrolling — great hook, great image, great format — click the Obsidian Web Clipper extension. It saves the full post text AND any images to your swipe folder instantly.
+Say: "Whenever you see a LinkedIn post that stopped you scrolling — great hook, great image, great format — click the Obsidian Web Clipper extension. It saves the full post text to your swipe folder instantly.
 
-After clipping a batch of posts, run this cleanup script to download the images locally so they never expire:
+One thing to know: LinkedIn images in the saved file are hosted on LinkedIn's servers. They show up fine in Obsidian for about 30 days, then they expire. So build your swipe habit around what actually matters — the hook, the format structure, the rhythm of the copy. That's what we'll clone anyway.
 
-```bash
-python3 /Users/a16094/ai-brain/aios/scripts/clean-swipe-clips.py
-```
+**How to clip properly:**
+1. Find a LinkedIn post you want to save
+2. Right-click → 'Save to Obsidian' OR click the Web Clipper extension icon
+3. It saves to the folder you set in Step 3
+4. The post text, images (while they're live), and URL are all saved
 
-This script:
-- Strips the comment threads Web Clipper captures
-- Downloads all LinkedIn CDN images to your vault (they expire in ~30 days otherwise)
-- Replaces expiring URLs with local Obsidian image links so everything stays visible forever
-
-Every time we write a post, I'll read your swipe folder and pull format inspiration from what you've saved."
+Every time we write a post, I'll check your swipe folder and pull format inspiration from what you've saved."
 
 **Step 5 — Mark setup as complete**
 
@@ -168,10 +164,8 @@ Run these 4 searches in PARALLEL. Do not ask user to wait — just do it. Do not
 ### Research Source 3: Hook swipe file + saved inspiration
 - Read: `~/content-system/swipe-hooks.md` — hook patterns available
 - Read: `~/content-system/swipe-images/` — scan any saved posts or images for format inspiration
-- **Also read Obsidian swipe vault:** `~/Documents/Obsidian Vault/raw/viral-corpus/her/linkedin/` — these are LinkedIn posts the user clipped with Obsidian Web Clipper and cleaned with the cleanup script. Each file has the full post text in `## Post` and local images as `![[filename.jpg]]` refs.
+- **Also read Obsidian swipe vault:** check the user's Obsidian vault swipe folder (they set the path in Step 3 of setup — ask them if you don't know it). These are LinkedIn posts clipped with Obsidian Web Clipper. Each file has the full post text in a `## Post` or `## Feed post` section. Read the post text to understand format, hook style, and rhythm.
 - Goal: see which hook patterns are available, what visual formats the user has saved, what structures high-performing posts use, pick fresh angles that match saved inspiration
-
-**Note on Obsidian swipe files:** These files are processed by `python3 /Users/a16094/ai-brain/aios/scripts/clean-swipe-clips.py`. Raw unprocessed files land in the `Clippings/` folder of the vault — run the script to clean them first. Processed files have `cleaned: true` in frontmatter and images saved locally.
 
 ### Research Source 4: User's posts memory
 - Read: `~/content-system/posts-log.md`
@@ -307,7 +301,7 @@ Read `~/content-system/positioning.md` and `~/content-system/posts-log.md`. Scor
 | TAM broad post | At least 1 broad reach post per week | 7+ days since last broad post |
 | Hook freshness | Hook pattern not used in last 30 days | Hook pattern repeated |
 | Positioning fit | Post reinforces user's authority angle | Post drifts from core positioning |
-| Lara 4-3-2-1 | Monthly post mix has variety | All posts same type |
+| Post type variety | Monthly post mix has variety | All posts same type |
 
 ### 5b — QA Output + Strategy Checklist
 
@@ -322,7 +316,7 @@ STRATEGY QA
 ✅ TAM broad post: [pass/flag + days since last broad post]
 ✅ Hook freshness: [pass/flag + hook type used]
 ✅ Positioning fit: [pass/flag + how it reinforces authority angle]
-✅ Lara 4-3-2-1: [pass/flag + post type balance this month]
+✅ Post type variety: [pass/flag + post type balance this month]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STRATEGY CHECKLIST — What's in this post
@@ -330,7 +324,7 @@ STRATEGY CHECKLIST — What's in this post
 Hook type: [which type — Contrarian / Story / Data / Observation / Open Question]
   → Why: [1 line on why this hook works for the target reader]
 
-Framework applied: [Lara 7-layer / PAS / AIDA / SLAY — which one and how]
+Framework applied: [7-layer / PAS / AIDA / SLAY — which one and how]
   → Why: [1 line on why this framework fits this topic]
 
 Emotional lead: [which emotion opens — fear / frustration / regret / hope / surprise]
@@ -342,7 +336,7 @@ Contrarian angle: [present or absent — and why]
 
 POV depth: [strong / needs work — based on the Phase 2 answers used]
 
-⚠️ Strategy gaps (if any): [any Lara framework not used, and whether it matters for this post]
+⚠️ Strategy gaps (if any): [any framework not used, and whether it matters for this post]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WHY THIS POST SHOULD PERFORM
@@ -457,34 +451,46 @@ ALTERNATE HOOKS
 3. [Different pattern]
 
 ━━━━━━━━━━━━━━━━━━
-IMAGE PROMPT (optional)
+IMAGE PROMPT
 ━━━━━━━━━━━━━━━━━━
-[Prompt for graphic/photo brief — or "skip, text-only works"]
+[Full image prompt — see Phase 6 for format options A-E]
 
 ━━━━━━━━━━━━━━━━━━
-COMMENT SEQUENCE (5 comments to post after going live)
+COMMENT SEQUENCE (5 comments — written in full, paste-ready)
 ━━━━━━━━━━━━━━━━━━
-Every post gets 5 comments prepared before publishing. Comments are the second content layer.
+Every post gets 5 comments written before publishing. Comments are the second content layer — they keep the post alive for hours. Write all 5 in full. No placeholders. No "[insert your stat here]". Real sentences, ready to paste.
 
-Comment types (rotate, never repeat same type twice in a row):
-- Reaction screenshot — caption framing real comments from others as reactions to your post insight
-- Own picture + take — Nabila's photo with 1-2 line caption
-- Behind the scenes — how the post was made or what happened after
-- Receipt drop — a stat, result, or proof point
-- Story that didn't fit — cut from the post body, lives here
+Comment rules:
+- No periods at end of lines
+- Under 3 sentences each
+- First-person voice, sounds typed on a phone
+- Never start comment 1 with "I"
+- Each comment a different type — never same type twice in a row
 
-For reaction screenshot comments:
-- Pick the insight the post teaches
-- Write caption as: "people's reaction when they learned [insight]" OR a short punchy frame (see variations in COMMENT-STRATEGY.md)
-- Attach screenshot of real comments that match that reaction
-- One caption per comment. One angle only.
+Types (use in this order):
+1. Reaction frame — "what [specific person/ICP] say when they realize [core insight from post]"
+2. Your take + photo prompt — raw opinion, 1-2 lines (note: attach your photo when posting this one)
+3. Behind the scenes — how this post idea came to you, or what happened right before you wrote it
+4. Receipt drop — a specific number, result, or proof point that didn't fit in the post body
+5. Story that didn't fit — a detail you cut from the draft that makes the post hit harder
 
-Reference: If user has a COMMENT-STRATEGY.md in ~/content-system/, read it for caption patterns. Otherwise use these examples as inspiration — adapt to the user's niche and post topic:
-- "what [ICP] say when they realize [core insight from post]"
-- "the [client/person] who [did the thing the post is about]"
-- "a stat that didn't fit in the post but changes how you read it"
-- "what I cut from the draft because it was too honest"
-- "the behind-the-scenes on how this post came together"
+COMMENT 1 — Reaction frame
+[Write the full comment text here — adapted to the post topic and ICP]
+
+COMMENT 2 — Your take + photo prompt
+[Write the caption text here — 1-2 lines, raw opinion. Note below: attach your photo when posting]
+📸 Attach: your photo from [describe relevant context from the post topic]
+
+COMMENT 3 — Behind the scenes
+[Write the full comment text here]
+
+COMMENT 4 — Receipt drop
+[Write the full comment text here — include a real number or specific result]
+
+COMMENT 5 — Story that didn't fit
+[Write the full comment text here]
+
+Reference: If user has a COMMENT-STRATEGY.md in ~/content-system/, read it first for caption patterns. Always adapt every comment to this specific post topic and niche.
 
 ━━━━━━━━━━━━━━━━━━
 POSTING CHECKLIST
@@ -531,7 +537,7 @@ Monthly phased intent:
 
 ## PHASE 6 — Image Prompt Agent
 
-Runs after the post is approved by user. Optional but recommended for every post.
+Runs after the post is approved by user. Not optional — every post must have an image prompt before it logs.
 
 ### 6a — Read the post context
 
@@ -546,18 +552,10 @@ Extract from the final post:
 Check both locations for saved visual inspiration:
 
 **Location 1:** `~/content-system/swipe-images/` — manually saved format notes
-**Location 2:** `~/Documents/Obsidian Vault/raw/viral-corpus/her/linkedin/` — LinkedIn posts clipped via Obsidian Web Clipper. Look at the `## Post` section for image types used (carousel `![[image.jpg]]`, text posts with no image, etc.) and the `## Why it worked` notes if filled in.
+**Location 2:** User's Obsidian vault swipe folder (path set in Step 3 of setup — ask if you don't know it) — LinkedIn posts clipped with Obsidian Web Clipper. Look at the `## Post` or `## Feed post` section for image types used (carousel `![[image.jpg]]`, text-only posts, single image posts) and any `## Why it worked` notes the user filled in.
 
-If images found: pick 2-3 relevant to the post topic/emotion — show which clipped post inspired the format choice.
+If swipe files found: pick 2-3 relevant to the post topic/emotion — show which clipped post inspired the format choice.
 If both empty: use built-in format library below.
-
-**How images land in the Obsidian swipe vault:**
-1. User clips a LinkedIn post with the Web Clipper browser extension
-2. Clip lands in `~/Documents/Obsidian Vault/raw/viral-corpus/her/linkedin/` (or `Clippings/`)
-3. User runs: `python3 /Users/a16094/ai-brain/aios/scripts/clean-swipe-clips.py`
-4. Script strips comment threads, downloads all LinkedIn CDN images locally, replaces expiring URLs with `![[local-filename.jpg]]` refs
-5. Images saved to: `~/Documents/Obsidian Vault/raw/viral-corpus/her/images/`
-6. Post is now visible in Obsidian with actual images — no expiring CDN links
 
 ### 6c — Present format options
 
