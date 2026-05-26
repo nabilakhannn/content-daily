@@ -475,7 +475,7 @@ Based on what's trending + your positioning + what's in your swipe file, here ar
 Pick one (1/2/3), or pitch your own topic.
 ```
 
-Always vary types across the 3 options — never show 3 of the same type. Aim for one Educational, one Storytelling, one Lead Magnet (if they have an offer) or one of each available type.
+Always vary types across the 3 options — never show 3 of the same type. Pick from 6 types: Educational, Storytelling, Lead Magnet, Client Result, Trend Jacking, Associations. If something is trending in their niche today, always include one Trend Jacking option. If they have a recent client win, include Client Result.
 
 Wait for user to pick. Don't move forward until they do.
 
@@ -492,8 +492,11 @@ Framework: [PAS / SLAY / AIDA]
 
 **Decision logic:**
 - Topic = framework / system / process / research / "how to" / testing / lessons / breakdown → **Educational** → PAS → carousel or doc format
-- Topic = personal moment / story / failure / win / vulnerability / confession / "I almost..." / client story → **Storytelling** → SLAY → text + photo
-- Topic = specific result with number / revenue / client proof / system reveal / DM funnel / offer → **Lead Magnet** → AIDA → text + CTA
+- Topic = personal moment / story / failure / win / vulnerability / confession / "I almost..." → **Storytelling** → SLAY → text + photo
+- Topic = YOUR result with number / revenue / system reveal / DM funnel / offer → **Lead Magnet** → AIDA → text + CTA
+- Topic = CLIENT or student win / before-after / transformation with number → **Client Result** → SLAY → text
+- Topic = breaking news / trending event / viral moment + you have a genuine contrarian take → **Trend Jacking** → PAS → text only, publish fast
+- Topic = real interaction with known figure / brand / framework / authority → **Associations** → SLAY → text + screenshot
 - Topic ambiguous → default to **Storytelling** (trust converts faster)
 
 After showing the content type line, say:
@@ -544,6 +547,9 @@ Content type was locked in Phase 1.5. Confirm it matches what came out of Phase 
 - **Educational:** Authority Breakdown, Contrarian Truth, Listicle Value Drop, Mini-Manifesto, Observation
 - **Storytelling:** Transformation Story, Emotional Confession, Open Loop Story, Micro-Poetic, Leadership Insight
 - **Lead Magnet:** Transformation Story (result-led), Authority Breakdown (proof-heavy), Contrarian Truth (anti-feature framing)
+- **Client Result:** Transformation Story (their journey), Leadership Insight (what you observed as the coach/guide)
+- **Trend Jacking:** Contrarian Truth, Observation, Mini-Manifesto
+- **Associations:** Transformation Story (what the moment revealed), Leadership Insight, Observation
 
 Pick ONE archetype from the shortlist for your locked content type. State it before writing:
 ```
