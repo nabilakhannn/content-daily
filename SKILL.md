@@ -1,6 +1,6 @@
 ---
 name: content-daily
-description: Primary LinkedIn content creation skill. Invoke for "give me today's content", "write me a LinkedIn post", "today's post", "content for this week", "generate my weekly posts", "post idea for me", "help me write a post", "I need content for [topic]", "batch this week's content". Runs a rigid 5-phase pipeline — Research → Topic Selection → POV Questions → Writing → Log. Cannot skip phases. Uses your voice card, the 7-layer Writing SOP, hook library, posts-log memory, and your positioning. Enforces anti-AI red-flag scan before output.
+description: Primary LinkedIn content creation skill. Invoke for "give me today's content", "write me a LinkedIn post", "today's post", "content for this week", "generate my weekly posts", "post idea for me", "help me write a post", "I need content for [topic]", "batch this week's content", "clone [file path or name]". Runs a rigid 5-phase pipeline — Research → Topic Selection → POV Questions → Writing → Log. Cannot skip phases. Uses your voice card, the 7-layer Writing SOP, hook library, posts-log memory, and your positioning. Reads swipe posts clipped from LinkedIn via Obsidian Web Clipper. Enforces anti-AI red-flag scan before output.
 ---
 
 # Content Daily — The 5-Phase Content Pipeline
@@ -48,14 +48,15 @@ Then say: "✅ Your content brain is now visible in Obsidian. Every file your AI
 
 **Step 3 — Install the Obsidian Web Clipper extension**
 
-Say: "This extension lets you save any LinkedIn post or image you like directly into your swipe file with one click. Here's how to install it:
+Say: "This extension saves any LinkedIn post you like directly into your swipe file with one click. Here's how:
 
 1. Open Chrome or Edge
-2. Search for 'Obsidian Web Clipper' in the Chrome Web Store, or go to: chromewebstore.google.com/detail/obsidian-web-clipper/mphkdfmipddgfobjhphabphmpdckgfhb
+2. Go to: chromewebstore.google.com/detail/obsidian-web-clipper/mphkdfmipddgfobjhphabphmpdckgfhb
 3. Click 'Add to Chrome'
-4. Once installed, click the extension icon in your browser toolbar
-5. It will ask which vault to connect to — select your content-system vault
-6. Set the default save folder to: swipe-images
+4. Click the extension icon in your browser toolbar
+5. Connect it to your Obsidian Vault
+6. Import the swipe template: in the extension settings, go to Templates, click Import, and paste the contents of `~/Documents/Obsidian Vault/raw/viral-corpus/_templates/web-clipper-configs/12-her-linkedin.json`
+   This makes clips land in `raw/viral-corpus/her/linkedin/` with the right fields filled in automatically
 
 Tell me when this is done."
 
@@ -63,9 +64,20 @@ Wait for user to confirm.
 
 **Step 4 — How to use your swipe file**
 
-Say: "From now on, whenever you see a LinkedIn post that made you stop scrolling — the hook was great, the image was good, the format worked — click the Obsidian Web Clipper extension. It saves it instantly to your swipe-images folder. No copying, no screenshots, no remembering.
+Say: "Whenever you see a LinkedIn post that stopped you scrolling — great hook, great image, great format — click the Obsidian Web Clipper extension. It saves the full post text AND any images to your swipe folder instantly.
 
-Every time you write a post, I'll check that folder and pull inspiration from what you've saved. The more you save, the smarter your system gets."
+After clipping a batch of posts, run this cleanup script to download the images locally so they never expire:
+
+```bash
+python3 /Users/a16094/ai-brain/aios/scripts/clean-swipe-clips.py
+```
+
+This script:
+- Strips the comment threads Web Clipper captures
+- Downloads all LinkedIn CDN images to your vault (they expire in ~30 days otherwise)
+- Replaces expiring URLs with local Obsidian image links so everything stays visible forever
+
+Every time we write a post, I'll read your swipe folder and pull format inspiration from what you've saved."
 
 **Step 5 — Mark setup as complete**
 
@@ -155,8 +167,11 @@ Run these 4 searches in PARALLEL. Do not ask user to wait — just do it. Do not
 
 ### Research Source 3: Hook swipe file + saved inspiration
 - Read: `~/content-system/swipe-hooks.md` — hook patterns available
-- Read: `~/content-system/swipe-images/` — scan any saved posts or images for format inspiration and what resonated with the user
-- Goal: see which hook patterns are available, what visual formats the user has saved, pick fresh angles that match their saved inspiration
+- Read: `~/content-system/swipe-images/` — scan any saved posts or images for format inspiration
+- **Also read Obsidian swipe vault:** `~/Documents/Obsidian Vault/raw/viral-corpus/her/linkedin/` — these are LinkedIn posts the user clipped with Obsidian Web Clipper and cleaned with the cleanup script. Each file has the full post text in `## Post` and local images as `![[filename.jpg]]` refs.
+- Goal: see which hook patterns are available, what visual formats the user has saved, what structures high-performing posts use, pick fresh angles that match saved inspiration
+
+**Note on Obsidian swipe files:** These files are processed by `python3 /Users/a16094/ai-brain/aios/scripts/clean-swipe-clips.py`. Raw unprocessed files land in the `Clippings/` folder of the vault — run the script to clean them first. Processed files have `cleaned: true` in frontmatter and images saved locally.
 
 ### Research Source 4: User's posts memory
 - Read: `~/content-system/posts-log.md`
@@ -528,12 +543,21 @@ Extract from the final post:
 
 ### 6b — Check swipe file for image inspiration
 
-Read `~/content-system/swipe-images/` if it exists. This folder holds image formats the user has saved as inspiration.
+Check both locations for saved visual inspiration:
 
-If the folder has items: list 2-3 relevant ones based on post topic/emotion.
-If the folder is empty or missing: skip and use built-in format library.
+**Location 1:** `~/content-system/swipe-images/` — manually saved format notes
+**Location 2:** `~/Documents/Obsidian Vault/raw/viral-corpus/her/linkedin/` — LinkedIn posts clipped via Obsidian Web Clipper. Look at the `## Post` section for image types used (carousel `![[image.jpg]]`, text posts with no image, etc.) and the `## Why it worked` notes if filled in.
 
-To add to swipe-images: user saves a screenshot or description to `~/content-system/swipe-images/[name].md` with a short note on the style.
+If images found: pick 2-3 relevant to the post topic/emotion — show which clipped post inspired the format choice.
+If both empty: use built-in format library below.
+
+**How images land in the Obsidian swipe vault:**
+1. User clips a LinkedIn post with the Web Clipper browser extension
+2. Clip lands in `~/Documents/Obsidian Vault/raw/viral-corpus/her/linkedin/` (or `Clippings/`)
+3. User runs: `python3 /Users/a16094/ai-brain/aios/scripts/clean-swipe-clips.py`
+4. Script strips comment threads, downloads all LinkedIn CDN images locally, replaces expiring URLs with `![[local-filename.jpg]]` refs
+5. Images saved to: `~/Documents/Obsidian Vault/raw/viral-corpus/her/images/`
+6. Post is now visible in Obsidian with actual images — no expiring CDN links
 
 ### 6c — Present format options
 
