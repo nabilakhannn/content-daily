@@ -13,6 +13,9 @@ Look at your source material. This determines your hook formula AND your framewo
 | Framework / tested system / research / how-to / step-by-step | **Educational** | Carousel or document | Authority + saves |
 | Personal moment / story / vulnerability / emotion around a win | **Storytelling** | Text + candid photo | Trust + comments |
 | Real result with specific number + system that produced it | **Lead Magnet** | Text + DM CTA | DMs + follows |
+| Client or student win with before/after number | **Client Result** | Text | Social proof + DMs |
+| Breaking trend or news + you have a genuine contrarian take | **Trend Jacking** | Text (publish fast) | Reach spike |
+| Real interaction with known figure, brand, or framework | **Associations** | Text + screenshot | Positioning + reach |
 
 **If you're not sure: default to Storytelling.** Trust builds faster than authority, and trust is what converts.
 
@@ -40,7 +43,7 @@ Look at your source material. This determines your hook formula AND your framewo
 
 Framework determines the *architecture*. The 7 layers below are the execution.
 
-### Framework A — SLAY (Lara's default)
+### Framework A — SLAY (default)
 **Use when:** story + lesson combined. Works for case studies, personal stories, client wins, behind-the-scenes.
 
 | Layer | What it is | Word count |
@@ -84,14 +87,17 @@ Content type → framework mapping (auto-flows from Step 0):
 | Content Type | Framework | Post subtypes that fit |
 |-------------|----------|----------------------|
 | **Educational** | PAS | Myth-busting, common mistake, "what most people miss", thought leader opinion, "what I learned" |
-| **Storytelling** | SLAY | Personal story, confession, client case study, behind-the-scenes, "what this moment taught me" |
-| **Lead Magnet** | AIDA | Proof post, result reveal, offer, authority play (credentials + proof), system reveal |
+| **Storytelling** | SLAY | Personal story, confession, behind-the-scenes, "what this moment taught me" |
+| **Lead Magnet** | AIDA | Your result reveal, offer, authority play (credentials + proof), system reveal |
+| **Client Result** | SLAY | Client case study, student win, before/after transformation |
+| **Trend Jacking** | PAS | News reframe, industry event take, viral moment + your POV |
+| **Associations** | SLAY | Met/heard known figure, mentioned by brand, shared belief with authority |
 
 If source fits two types, use content type that matches your GOAL this week (trust-building week → Storytelling, authority week → Educational, pipeline week → Lead Magnet).
 
 ---
 
-## Lara's Pre-Write Rule
+## Pre-Write Rule
 
 **Only write from a validated hook.**
 
@@ -100,8 +106,6 @@ Before drafting anything, check: did someone already react to this idea in conve
 Also: use voice memos. Say the post out loud while driving or walking. If you can't say it naturally, you can't write it cleanly. Record → transcribe → clean up.
 
 **30-minute rule:** if the post isn't flowing in 30 minutes, the idea isn't ready. Stop. Come back to it. Don't force structure onto a half-formed thought.
-
----
 
 ---
 
@@ -202,7 +206,7 @@ Rules:
 
 ---
 
-## Specificity Rules (Lara's #1 principle)
+## Specificity Rules (#1 principle)
 
 Specificity builds trust faster than any other device. It's the shortcut.
 
@@ -228,7 +232,7 @@ Specificity builds trust faster than any other device. It's the shortcut.
 
 ## Format Selection — 2026 Rules
 
-Per Lara's testing across 100+ clients: **static photo + text beats video** on LinkedIn in 2026.
+Per live testing across 100+ clients: **static photo + text beats video** on LinkedIn in 2026.
 
 | Format | When to use |
 |--------|------------|
@@ -270,7 +274,7 @@ Use when: proving a principle works regardless of follower count, industry, expe
 
 ---
 
-## Belief Shift Architecture (Lara's 3-belief structure)
+## Belief Shift Architecture (3-belief structure)
 
 Every educational post should flip at least one belief. Best posts flip all three:
 
